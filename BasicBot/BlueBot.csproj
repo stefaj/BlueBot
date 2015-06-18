@@ -48,6 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasicBot.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="MiniMax.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -55,6 +58,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScoredMove.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

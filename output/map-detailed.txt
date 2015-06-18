@@ -1,45 +1,45 @@
 ###################
 # C# Sample Bot   #
 # Wave Size:  3   #
-# Delta X:  1     #
-# Energy: 4/6     #
+# Delta X: -1     #
+# Energy: 0/6     #
 # Respawn: -1     #
-# Round:  16      #
+# Round:  30      #
 # Kills: 0        #
-# Lives: 2        #
+# Lives: 1        #
 # Missiles: 0/1   #
 ###################
 #                 #
-#       VVV       #
+#           |  VVV#
 # ---         --- #
 # ---         --- #
-# ---   |     --- #
+# ---         --- #
 #                 #
 #                 #
+#        |        #
+#  x  x  x        #
+#                 #
+#  x  x  x        #
+#                 #
+#  x  x  x        #
+#                 #
+#  x  x  x        #
+#        |        #
 #                 #
 #                 #
-#     x  x  x     #
-#                 #
-#                 #
-#                 #
-#     x  x  x     #
-#                 #
-#                 #
-#                 #
-#                 #
-# ---   |     --- #
 # ---         --- #
 # ---         --- #
-#       AAA       #
+# ---         --- #
+#AAA        |     #
 #                 #
 ###################
 # Missiles: 0/1   #
-# Lives: 2        #
+# Lives: 1        #
 # Kills: 0        #
-# Round:  16      #
+# Round:  30      #
 # Respawn: -1     #
-# Energy: 4/6     #
-# Delta X:  1     #
+# Energy: 0/6     #
+# Delta X: -1     #
 # Wave Size:  3   #
 # C# Sample Bot   #
 ###################
