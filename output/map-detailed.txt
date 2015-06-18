@@ -1,5 +1,9 @@
 ###################
 # C# Sample Bot   #
+# Wave Size:  3   #
+# Delta X:  1     #
+# Energy: 4/6     #
+# Respawn: -1     #
 # Round:  16      #
 # Kills: 0        #
 # Lives: 2        #
@@ -33,6 +37,10 @@
 # Lives: 2        #
 # Kills: 0        #
 # Round:  16      #
+# Respawn: -1     #
+# Energy: 4/6     #
+# Delta X:  1     #
+# Wave Size:  3   #
 # C# Sample Bot   #
 ###################
 

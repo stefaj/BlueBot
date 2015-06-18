@@ -16,7 +16,7 @@ namespace BasicBot
             stopwatch.Stop();
             Console.WriteLine("[BOT]\tBot finished in {0} ms.", stopwatch.ElapsedMilliseconds);
 
-            Console.ReadLine();
+            //Console.ReadLine();
         }
 
         private static void RunBot(string[] args)

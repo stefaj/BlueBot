@@ -42,9 +42,6 @@
     <Reference Include="ChallengeHarnessInterfaces">
       <HintPath>..\libs\ChallengeHarnessInterfaces.dll</HintPath>
     </Reference>
-    <Reference Include="SpaceInvaders">
-      <HintPath>..\libs\SpaceInvaders.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -80,6 +77,12 @@
     <Content Include="output\map.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Visual Studio 2013\Projects\2015-SpaceInvaders-TestHarness-1.0.1\SpaceInvaders\SpaceInvaders.csproj">
+      <Project>{cfa0285c-1e91-4d94-a5ee-476fb4f20f84}</Project>
+      <Name>SpaceInvaders</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
