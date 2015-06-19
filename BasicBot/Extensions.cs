@@ -126,8 +126,14 @@ namespace BasicBot
 
             copy.Players.Clear();
             copy.Map = match.Map.Copy();
-            copy.Players.Add(match.GetPlayer(2).Copy());
-            copy.Players.Add(match.GetPlayer(1).Copy());
+            var player1 = match.GetPlayer(1).Copy();
+            var player2 = match.GetPlayer(2).Copy();
+
+            copy.Players.Add(player1);
+            copy.Players.Add(player2);
+
+            copy.Map.UpdateManager.Entities[1][EntityType.Ship] = new List<Entity>() { player1.Ship};
+            copy.Map.UpdateManager.Entities[2][EntityType.Ship] = new List<Entity>() { player2.Ship};
 
             return copy;
         }

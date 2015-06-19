@@ -40,26 +40,15 @@ namespace BasicBot
             //match.GetPlayer(1).Ship.Update();
 
             //Test/
-        /*    float baseScore = Score(0);
-            backup_gamestate();
-            match.SetPlayerMove(1, ShipCommand.BuildAlienFactory.ToString());
-            match.Update();
-            float alienScore = Score(0);
-            restore_gamestate();
+         /*   game.MakeMove();
+            game.UndoMove();
 
-            backup_gamestate();
-            match.SetPlayerMove(1, ShipCommand.MoveRight.ToString());
-            match.Update();
-            float moveRighTScore = Score(0);
-            restore_gamestate();
+            game.SetMove(Players.PlayerOne, ShipCommand.Shoot);
+            game.MakeMove();
+            game.UndoMove();
+            */
+    
 
-            backup_gamestate();
-            match.SetPlayerMove(1, ShipCommand.Shoot.ToString());
-            match.Update();
-            float shootScore = Score(0);
-            restore_gamestate();
-
-            return;*/
             DoMove();
            
 

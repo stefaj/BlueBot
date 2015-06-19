@@ -125,44 +125,7 @@ namespace BasicBot
 
             Match backup_state;
 
-            backup_state = this.Match.GetFlippedCopyOfMatch().GetFlippedCopyOfMatch() as Match;
-            // foreach (Player pl in this.Match.Players)
-            //    pl.RespawnPlayerShipIfNecessary();
-            // backup_state.Map.UpdateManager.Update();
-            backup_state.Map.UpdateEntities();
-            // backup_state.Map.UpdateManager.Update();
-
-            for (int i = 1; i <= 2; i++)
-            {
-                var mis = this.Match.GetPlayer(i).MissileController;
-                var ali = this.Match.GetPlayer(i).AlienFactory;
-                var shi = this.Match.GetPlayer(i).Ship;
-                if (mis != null)
-                    backup_state.GetPlayer(i).MissileController = new SpaceInvaders.Entities.Buildings.MissileController(mis.Id, mis.PlayerNumber, mis.X, mis.Y, mis.Width, mis.Height, mis.Alive, mis.LivesCost);
-                if (ali != null)
-                    backup_state.GetPlayer(i).AlienFactory = new SpaceInvaders.Entities.Buildings.AlienFactory(ali.Id, ali.PlayerNumber, ali.X, ali.Y, ali.Width, ali.Height, ali.Alive, ali.LivesCost);
-                if (shi != null)
-                    backup_state.GetPlayer(i).Ship = new SpaceInvaders.Entities.Ship(shi.Id, shi.PlayerNumber, shi.X, shi.Y, shi.Width, shi.Height, shi.Alive, shi.Command, shi.CommandFeedback);
-
-            }
-
-            for (int i = 1; i < 3; i++)
-            {
-                if (this.UpdateManager.Entities[i].ContainsKey(EntityType.Ship))
-                {
-                    while (this.Match.Map.UpdateManager.Entities[i][EntityType.Ship].Count > 1)
-                        this.UpdateManager.Entities[i][EntityType.Ship].RemoveAt(0);
-                }
-                else
-                {
-                    this.UpdateManager.Entities[i][EntityType.Ship] = new List<Entity>() { this.Match.GetPlayer(i).Ship };
-                }
-                this.UpdateManager.Entities[i][EntityType.Ship][0] = this.Match.GetPlayer(i).Ship;
-                
-            }
-
-
-            backup_state.Map.UpdateManager.EntitiesUnclassified.Clear();
+            backup_state = this.Match.Copy();
 
             stack.Push(backup_state);
 
@@ -232,10 +195,11 @@ namespace BasicBot
             }
 
             List<ShipCommand> possibleMoves = new List<ShipCommand>();
+            possibleMoves.Add(ShipCommand.Nothing);
             if (player.Ship.X > 1)
                 possibleMoves.Add(pl == Players.PlayerOne ? ShipCommand.MoveLeft : ShipCommand.MoveRight);
             if (player.Ship.X + player.Ship.Width < MapWidth - 2)
-                possibleMoves.Add(pl == Players.PlayerTwo ? ShipCommand.MoveRight : ShipCommand.MoveLeft);
+                possibleMoves.Add(pl == Players.PlayerOne ? ShipCommand.MoveRight : ShipCommand.MoveLeft);
             if (player.Missiles.Count < player.MissileLimit)
                 possibleMoves.Add(ShipCommand.Shoot);
             if (player.Lives > 0 && IsPosClear(player.Ship.X, player.Ship.Y + 1 * delta))
@@ -251,7 +215,7 @@ namespace BasicBot
             }
             if (player.Lives > 0)
                 possibleMoves.Add(ShipCommand.BuildShield);
-            possibleMoves.Add(ShipCommand.Nothing);
+            
 
             return possibleMoves;
         }
@@ -290,21 +254,10 @@ namespace BasicBot
                     Converters = { new EntityConverter() },
                     NullValueHandling = NullValueHandling.Ignore
                 });
-            for (int i = 1; i < 3; i++)
-            {
-                try
-                {
-                    while (match.Map.UpdateManager.Entities[i][EntityType.Ship].Count > 1)
-                        match.Map.UpdateManager.Entities[i][EntityType.Ship].RemoveAt(0);
-                    match.Map.UpdateManager.Entities[i][EntityType.Ship][0] = match.GetPlayer(i).Ship;
-                }
-                catch
-                {
-                    continue;
-                }
-            }
 
-           
+            match.Map.UpdateManager.Entities[1][EntityType.Ship] = new List<Entity>() { match.GetPlayer(1).Ship };
+            match.Map.UpdateManager.Entities[2][EntityType.Ship] = new List<Entity>() { match.GetPlayer(2).Ship };
+
             match.Map.UpdateManager.EntitiesUnclassified.Clear();
             return match;
         }

@@ -142,8 +142,6 @@ namespace BasicBot
 
         public ScoredMove MinMax(Players player, int depth = 0)
         {
-            if(player == Players.PlayerTwo)
-                depth++;
             ScoredMove best_move = new ScoredMove();
    
             
@@ -156,7 +154,7 @@ namespace BasicBot
                 else
                     return new ScoredMove(-100);
             }
-            else if (depth > 2)
+            else if (depth > 4)
             {
                 float util = game.Player1.Lives - game.Player2.Lives;
                 if (player == Players.PlayerOne)
@@ -177,7 +175,7 @@ namespace BasicBot
                 game.SetMove(player, m);
                 if (player == Players.PlayerTwo)
                     game.MakeMove();
-                var score = MinMax(Game.NextPlayer(player), depth);
+                var score = MinMax(Game.NextPlayer(player), depth++);
                 if (player == Players.PlayerTwo)
                     game.UndoMove();
 
